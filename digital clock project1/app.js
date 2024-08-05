@@ -1,0 +1,38 @@
+const hourEl = document.getElementById("Hour")
+const MinutesEl = document.getElementById("Minutes")
+const SecondsEl = document.getElementById("Seconds")
+const ampmEl = document.getElementById("ampm")
+
+function updateClock(){
+    let h = new Date().getHours();
+    let m = new Date() .getMinutes();
+    let s = new Date() .getSeconds();
+    let ampm = "Am";
+
+    if(h>12){
+        h = h-12;
+        ampm = 'Pm';
+    }
+        else if (h===0){
+            h = 12;
+    }
+
+    h = h<10? '0' + h : h;
+    m = m<10? '0' + m : m;
+    s = s<10? '0' + s: s;
+
+    hourEl.innerText = h;
+    MinutesEl.innerText = m;
+    SecondsEl.innerText = s;
+    ampmEl.innerText = ampm;
+
+    setTimeout(()=> {
+        updateClock();
+    },1000);
+
+}
+updateClock();
+ 
+
+    
+
